@@ -1,5 +1,8 @@
-<ul ng-repeat="problem in problemList">
-  <li>
-    <a ng-href="#/problem/{{ problem.id }}">{{ problem.name }}</a>
-  </li>
-</ul>
+<div>
+  <h3>Current problems: </h3>
+  <ul ng-repeat="problem in problemList">
+    <li>
+      <a ng-href="#/problem/{{ problem.id }}">{{ problem.name }}</a>
+    </li>
+  </ul>
+</div>
