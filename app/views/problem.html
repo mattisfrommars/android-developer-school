@@ -1,0 +1,75 @@
+<div>
+  <h3>{{ problem.name }}</h3>
+  <p>{{ problem.description }}</p>
+  <h4>Solutions</h4>
+  <ul ng-repeat="solution in problem.solutions | orderBy:'score'">
+    <li>
+      <ul>
+        <li>Submitted By: {{solution.submitted_by.displayName}}</li>
+        <li><gist url="{{solution.gist}}"></gist> </li>
+        <li><imgur url="{{solution.imgur}}"></imgur></li>
+      </ul>
+    </li>
+  </ul>
+  <h3>Submit Solution:</h3>
+
+  <div class="well">
+    <form name="formSolution">
+      <p>
+        <label for="input-gist">Link to Gist:</label>
+        <input
+          name="gist"
+          id="input-gist"
+          ng-model="gist"
+          type="text"
+          required
+          ng-minlength="30"
+          ng-maxlength="150"
+          ng-pattern="/^https:\/\/gist\.github\.com\/[a-zA-Z0-9]+\/[a-zA-Z0-9]+\/?$/"
+          placeholder="https://gist.github.com/USERNAME/ID" />
+      </p>
+      <p
+        class="errorMessage"
+        ng-if="formSolution.gist.$error.pattern"
+        >
+        Must match pattern <strong><em>https://gist.github.com/[a-zA-Z0-9]+/[a-zA-Z0-9]+</em></strong>
+      </p>
+      <p>
+        <label for="input-imgur">Link to imgur:</label>
+        <input
+          id="input-imgur"
+          name="imgur"
+          ng-model="imgur"
+          type="text"
+          ng-minlength="30"
+          ng-maxlength="150"
+          ng-pattern="/^https?:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.jpg$/"
+          placeholder="http://imgur.com/123123"/>
+      </p>
+      <p
+        class="errorMessage"
+        ng-if="formSolution.imgur.$error.pattern"
+        >
+        Must match pattern <strong><em>http://i.imgur.com/[a-zA-Z0-9]+.jpg</em></strong>
+      </p>
+      <p class="errorMessage">
+        {{ serverError }}
+      </p>
+      <div
+        class="wrap"
+        ng-if="person.id === null"
+        >
+        <google-plus-signin
+          clientid="50699877802-1tv46dlu4uba832pukt6s8dsqdbo2s40.apps.googleusercontent.com"
+          data-requestvisibleactions=""
+          data-scope="profile"
+          ></google-plus-signin>
+      </div>
+      <div ng-if="person.id">
+        <div class="info"><em>Signed in as: <strong>{{ person.displayName }}</strong></em></div>
+        <input type="submit" ng-click="submit()" class="btn btn-info" />
+        <button ng-click="signOut()" class="btn btn-danger">Sign Out</button>
+      </div>
+    </form>
+  </div>
+</div>

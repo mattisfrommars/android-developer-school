@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <div
+    class="wrap"
+    ng-if="person.id === null"
+  >
+    <google-plus-signin
+      clientid="50699877802-1tv46dlu4uba832pukt6s8dsqdbo2s40.apps.googleusercontent.com"
+      data-requestvisibleactions=""
+      data-scope="profile"
+      ></google-plus-signin>
+  </div>
+  <button
+    ng-if="person.id"
+    ng-click="signOut()"
+  >Sign Out</button>
+
+  <h3>Hello, {{ person.displayName }}</h3>
+</div>

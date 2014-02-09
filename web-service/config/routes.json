@@ -1,0 +1,7 @@
+{
+  "routes" : [
+    [ "get", "/problem", "problem", "index", [] ],
+    [ "get", "/problem/:problem_id", "problem", "get", [] ],
+    [ "post", "/problem/:problem_id/solution", "solution", "create", [] ]
+  ]
+}
