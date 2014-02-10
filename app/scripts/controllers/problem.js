@@ -15,6 +15,10 @@ angular.module('adsApp')
     function getProblem () {
       ProblemsService.get( id ).then(function( problem ){
         $scope.problem = problem.data;
+        $scope.problem.solution = $scope.problem.solution.map(function(i){
+          i.submitted_by = JSON.parse( i.submitted_by );
+          return i;
+        });
       }, function(){
         debugger;
       });

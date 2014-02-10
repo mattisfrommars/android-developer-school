@@ -11,7 +11,8 @@ solution.parseMap = {
 };
 
 solution.postCreate = function ( thisSolution ) {
-  console.log( thisSolution );
+  var problemSolution = rqr('models/problem_solution');
+  problemSolution.push( thisSolution.problem_id, thisSolution.id );
 };
 
 module.exports = solution;

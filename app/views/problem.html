@@ -2,7 +2,7 @@
   <h3>{{ problem.name }}</h3>
   <p>{{ problem.description }}</p>
   <h4>Solutions</h4>
-  <ul ng-repeat="solution in problem.solutions | orderBy:'score'">
+  <ul ng-repeat="solution in problem.solution | orderBy:'score'">
     <li>
       <ul>
         <li>Submitted By: {{solution.submitted_by.displayName}}</li>

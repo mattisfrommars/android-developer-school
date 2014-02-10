@@ -17,6 +17,6 @@ problem.linkSolution = function ( problem ) {
 
   return deferred;
 
-}
+};
 
 module.exports = problem;
